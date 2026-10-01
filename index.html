@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ALTERE: Título da página (aparece na aba do navegador) -->
+    <title>PITINANINHA 🧛‍♀️</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Celebração de aniversário temática - Nocturne, uma jornada pelas sombras e pela amizade eterna.">
+
+    <!-- Favicon (opcional — substitua pelo seu) -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦇</text></svg>">
+
+    <!-- Folha de Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         PARTÍCULAS DE FUNDO — efeito visual flutuante
+         Não precisa alterar, é gerado via JavaScript
+         ============================================================ -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ============================================================
+         NAVEGAÇÃO INFERIOR FIXA
+         ALTERE: Modifique os ícones e links dos itens de navegação
+         ============================================================ -->
+    <nav class="navbar" id="navbar">
+        <!-- Item: Início -->
+        <a href="#inicio" class="nav-item active" data-section="inicio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z" />
+            </svg>
+            <span>Início</span>
+        </a>
+        <!-- Item: Crônicas -->
+        <a href="#cronicas" class="nav-item" data-section="cronicas">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                <path d="M8 7h8M8 11h6" />
+            </svg>
+            <span>Crônicas</span>
+        </a>
+        <!-- Item: Galeria -->
+        <a href="#galeria" class="nav-item" data-section="galeria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span>Galeria</span>
+        </a>
+        <!-- Item: Música -->
+        <a href="#musica" class="nav-item" data-section="musica">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 18V5l12-2v13" />
+                <circle cx="6" cy="18" r="3" />
+                <circle cx="18" cy="16" r="3" />
+            </svg>
+            <span>Música</span>
+        </a>
+        <!-- Item: Votos -->
+        <a href="#mensagem" class="nav-item" data-section="mensagem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                    d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+            </svg>
+            <span>Votos</span>
+        </a>
+    </nav>
+
+    <!-- ============================================================
+         CONTAINER PRINCIPAL — Todo o conteúdo fica aqui dentro
+         ============================================================ -->
+    <main class="main-container">
+
+        <!-- ============================================================
+             SEÇÃO HERO — Cabeçalho do site
+             ALTERE: Textos, data, subtítulo e badges
+             ============================================================ -->
+        <section class="hero-section fade-in" id="inicio">
+
+            <!-- Card do cabeçalho com nome e selo -->
+            <div class="hero-header-card fade-in-delay-1">
+                <div class="hero-header-info">
+                    <!-- ALTERE: Categoria e nome do evento -->
+                    <div class="hero-header-label"></div>
+                    <!-- ALTERE: Nome/título do home -->
+                    <h2 class="hero-header-title">Feliz Aniversário</h2>
+                </div>
+                <!-- Selo decorativo -->
+                <div class="hero-seal">
+                    <!-- Ícone de estrela no selo -->
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7L12 16.4 5.7 21l2.3-7-6-4.6h7.6z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- ALTERE: Data do evento -->
+            <div class="hero-date-badge fade-in-delay-2">
+                <span class="star">✦</span>
+                01 DE OUTUBRO • O RITUAL DA MEIA-NOITE
+                <span class="star">✦</span>
+            </div>
+
+            <!-- ALTERE: Título principal — use <em> para itálico rosa -->
+            <h1 class="hero-title fade-in-delay-3">
+                Mais um Século de <em>Brilho & Mistério</em>
+            </h1>
+
+            <!-- ALTERE: Subtítulo / dedicatória -->
+            <p class="hero-subtitle fade-in-delay-4">
+                À minha cúmplice de outonos infinitos, soberana das madrugadas veladas e minha vampira favorita.
+            </p>
+
+            <!-- ALTERE: Badges de status -->
+            <div class="status-badges fade-in-delay-4">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 01-3.46 0" />
+                    </svg>
+                    Status: Imortal
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 8v4l3 3" />
+                        <circle cx="12" cy="12" r="10" />
+                    </svg>
+                    Idade: Ancestral
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                    </svg>
+                    Pacto: Eterno
+                </span>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SEÇÃO DE FOTO COM CITAÇÃO — "Voto de Sangue & Alma"
+             ALTERE: Imagem de fundo e texto da citação
+             ============================================================ -->
+        <section class="vow-section reveal" id="voto">
+            <!-- ALTERE: Substitua 'hero-portrait.jpg' pela sua foto -->
+            <img src="img/damon-salvatore-of-vampire-diaries-2-v6teojsmkeooq08r.webp" alt="Foto de amizade"
+                class="vow-image">
+
+            <div class="vow-content">
+                <!-- ALTERE: Label da seção -->
+                <div class="vow-label">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22c-4.97 0-9-2.69-9-6v-2c0-3.31 4.03-6 9-6s9 2.69 9 6v2c0 3.31-4.03 6-9 6z" />
+                    </svg>
+                    Voto de Sangue & Alma
+                </div>
+
+                <!-- ALTERE: Texto da citação -->
+                <blockquote class="vow-quote">
+                    "Você quer um amor que te consuma. Você quer paixão, aventura e até um pouco de perigo."
+                </blockquote>
+
+                <div class="vow-footer">
+                    <div class="vow-status">
+                        <span class="dot"></span>
+                        Damon Salvatore
+                    </div>
+                    <button class="btn-eternize">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                        </svg>
+                        Eternizar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SEPARADOR DECORATIVO
+             ============================================================ -->
+        <div class="divider">
+            <div class="divider-line"></div>
+            <span class="star-icon">✦</span>
+            <svg viewBox="0 0 24 24">
+                <path d="M12 22c-4.97 0-9-2.69-9-6v-2c0-3.31 4.03-6 9-6s9 2.69 9 6v2c0 3.31-4.03 6-9 6z" />
+            </svg>
+            <span class="star-icon">✦</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- ============================================================
+             SEÇÃO CRÔNICAS — Timeline de Capítulos
+             ALTERE: Adicione ou remova cards da timeline
+             ============================================================ -->
+        <section class="chronicles-section reveal" id="cronicas">
+            <div class="section-header">
+                <div>
+                    <!-- ALTERE: Label e título da seção -->
+                    <div class="section-label">Grimório Pessoal</div>
+                    <h2 class="section-title">Crônicas & Segredos</h2>
+                </div>
+                <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                </svg>
+            </div>
+
+            <div class="timeline">
+                <!-- ALTERE: Capítulo I — Primeiro evento/ano -->
+                <div class="timeline-card">
+                    <div class="timeline-card-header">
+                        <h3 class="timeline-card-title">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z" />
+                            </svg>
+                            Capítulo I — O Despertar
+                        </h3>
+                        <span class="timeline-card-year">Ano I</span>
+                    </div>
+                    <!-- ALTERE: Descrição do capítulo -->
+                    <p class="timeline-card-text">
+                        A primeira noite em que nossas almas se encontraram, tecendo laços eternos entre as penumbras de
+                        veludo escarlate,
+                        foi erguida por sussurros tímidos e confissões profundas que apenas a névoa soube guardar,
+                        e que o tempo, em sua infinita marcha, parou para testemunhar.
+                    </p>
+                </div>
+
+                <!-- ALTERE: Capítulo II — Segundo evento/ano -->
+                <div class="timeline-card">
+                    <div class="timeline-card-header">
+                        <h3 class="timeline-card-title">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                            </svg>
+                            Capítulo II — A Ascensão
+                        </h3>
+                        <span class="timeline-card-year">Ano II</span>
+                    </div>
+                    <!-- ALTERE: Descrição do capítulo -->
+                    <p class="timeline-card-text">
+                        Sob a luz prateada e hipnótica da lua cheia, assim como seus olhos. Nossos destinos foram
+                        irrevogavelmente entrelaçados
+                        em rituais de gargalhadas doces e segredos guardados pelas sombras. Cada sorriso ecoou pela
+                        escuridão como um feitiço poderoso,
+                        uma magia antiga conjurada apenas por nós para desafiar a implacável brevidade do tempo e
+                        eternizar nossa devoção através das eras.
+                    </p>
+                </div>
+
+                <!-- ALTERE: Capítulo III — Evento presente -->
+                <div class="timeline-card">
+                    <div class="timeline-card-header">
+                        <h3 class="timeline-card-title">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+                            </svg>
+                            Capítulo III — O Juramento dos Anos
+                        </h3>
+                        <span class="timeline-card-year">Presente</span>
+                    </div>
+                    <!-- ALTERE: Descrição do capítulo -->
+                    <p class="timeline-card-text">
+                        Desejo-te incontáveis séculos de uma soberania majestosa e irrefutável, onde a tua saúde, assim
+                        como meu amor
+                        inabalável resista ao desgaste das eras, sempre coroada por luxuosos banquetes onde os teus
+                        sonhos mais intensos e profundos ganham finalmente vida. E, mais do que tudo, anseio que a nosso
+                        sombrio amor gótico permaneça inquebrável e intacto, erguendo-se como um escudo eterno
+                        perante qualquer nova era ou força inclemente que ouse,
+                        em vão, tentar desafiar o nosso vínculo imortal.
+                    </p>
+                </div>
+
+                <!-- 
+                    PARA ADICIONAR MAIS CAPÍTULOS:
+                    Copie e cole o bloco <div class="timeline-card">...</div> acima
+                    e altere o título, ano e texto.
+                -->
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SEPARADOR DECORATIVO
+             ============================================================ -->
+        <div class="divider">
+            <div class="divider-line"></div>
+            <span class="star-icon">✦</span>
+            <svg viewBox="0 0 24 24">
+                <path d="M12 22c-4.97 0-9-2.69-9-6v-2c0-3.31 4.03-6 9-6s9 2.69 9 6v2c0 3.31-4.03 6-9 6z" />
+            </svg>
+            <span class="star-icon">✦</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- ============================================================
+             GALERIA DE FOTOS — "Memórias Eternas"
+             ALTERE: Adicione suas próprias fotos aqui
+             ============================================================ -->
+        <section class="gallery-section reveal" id="galeria">
+            <div class="section-header">
+                <div>
+                    <!-- ALTERE: Label e título da galeria -->
+                    <div class="section-label">Arquivos Sombrios</div>
+                    <h2 class="section-title">Memórias Eternas</h2>
+                </div>
+                <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" />
+                </svg>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Foto 1 (grande, ocupa 2 colunas) -->
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/foto1.jpeg" alt="Memória 1">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Memória I</span>
+                    </div>
+                </div>
+
+                <!-- Foto 2 -->
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/foto2.jpeg" alt="Memória 2">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Memória II</span>
+                    </div>
+                </div>
+
+                <!-- Foto 3 -->
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/foto3.jpeg" alt="Memória 3">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Memória III</span>
+                    </div>
+                </div>
+
+                <!-- Foto 4 -->
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/foto4.jpeg" alt="Memória 4">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Memória IV</span>
+                    </div>
+                </div>
+
+                <!-- Foto 6 (foto5 foi pulada) -->
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/foto6.jpeg" alt="Memória 6">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Memória V</span>
+                    </div>
+                </div>
+
+                <!-- Foto 7 -->
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/foto7.jpeg" alt="Memória 7">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Memória VI</span>
+                    </div>
+                </div>
+
+                <!-- 
+                    PARA ADICIONAR MAIS FOTOS:
+                    1. Coloque a imagem na pasta img/
+                    2. Copie e cole o bloco <div class="gallery-item">...</div>
+                    3. Altere o src="..." para apontar para sua nova imagem
+                    4. Altere o alt="..." para uma descrição da foto
+                    5. Altere o texto do gallery-item-label
+                -->
+
+                <!-- Botão para adicionar mais fotos (visual apenas) -->
+                <div class="gallery-add-more">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                    Adicionar mais memórias
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SEPARADOR DECORATIVO
+             ============================================================ -->
+        <div class="divider">
+            <div class="divider-line"></div>
+            <span class="star-icon">✦</span>
+            <svg viewBox="0 0 24 24">
+                <path d="M12 22c-4.97 0-9-2.69-9-6v-2c0-3.31 4.03-6 9-6s9 2.69 9 6v2c0 3.31-4.03 6-9 6z" />
+            </svg>
+            <span class="star-icon">✦</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- ============================================================
+             SEÇÃO DO TOCA-DISCOS — Player de Músicas
+             ALTERE: Adicione seus arquivos de música
+             ============================================================ -->
+        <section class="music-section reveal" id="musica">
+            <div class="section-header">
+                <div>
+                    <!-- ALTERE: Label e título da seção de música -->
+                    <div class="section-label">Sinfonia Noturna</div>
+                    <h2 class="section-title">Toca-Discos Gótico</h2>
+                </div>
+                <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="12" r="3" />
+                </svg>
+            </div>
+
+            <!-- Player de Vinil Visual -->
+            <div class="vinyl-player">
+                <!-- Container do disco -->
+                <div class="vinyl-container">
+                    <!-- Disco de vinil (clique para tocar/pausar) -->
+                    <div class="vinyl-disc" id="vinyl-disc" onclick="togglePlay()">
+                        <div class="vinyl-center">
+                            <!-- ALTERE: Substitua pelo logo/capa do álbum -->
+                            <span class="vinyl-center-label">NOCTURNE<br>RECORDS</span>
+                        </div>
+                    </div>
+                    <!-- Agulha do toca-discos -->
+                    <div class="vinyl-arm" id="vinyl-arm">
+                        <div class="vinyl-arm-pivot"></div>
+                        <div class="vinyl-arm-line">
+                            <div class="vinyl-arm-head"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info da música tocando -->
+                <div class="now-playing">
+                    <div class="now-playing-label">
+                        <span class="wave-icon" id="wave-icon">
+                            <span class="wave-bar paused"></span>
+                            <span class="wave-bar paused"></span>
+                            <span class="wave-bar paused"></span>
+                            <span class="wave-bar paused"></span>
+                        </span>
+                        Tocando Agora
+                    </div>
+                    <!-- ALTERE: Nome da música e artista (muda dinamicamente via JS) -->
+                    <div class="now-playing-song" id="now-playing-song">Pyramids</div>
+                    <div class="now-playing-artist" id="now-playing-artist">Frank Ocean</div>
+                </div>
+
+                <!-- Barra de progresso -->
+                <div class="progress-container">
+                    <div class="progress-bar-wrapper" id="progress-bar" onclick="seekTrack(event)">
+                        <div class="progress-bar-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-times">
+                        <span id="current-time">0:00</span>
+                        <span class="quality-label">
+                            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                                <path d="M3 9v6h4l5 5V4L7 9H3z" />
+                                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                            </svg>
+                            Fidelidade Vinil
+                        </span>
+                        <span id="total-time">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Controles do player -->
+                <div class="player-controls">
+                    <!-- Shuffle -->
+                    <button class="player-btn" id="btn-shuffle" onclick="toggleShuffle()" title="Aleatório">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
+                        </svg>
+                    </button>
+                    <!-- Anterior -->
+                    <button class="player-btn" onclick="prevTrack()" title="Anterior">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 20L9 12l10-8v16zM5 4h2v16H5z" />
+                        </svg>
+                    </button>
+                    <!-- Play/Pause -->
+                    <button class="player-btn player-btn-play" id="btn-play" onclick="togglePlay()"
+                        title="Tocar/Pausar">
+                        <svg viewBox="0 0 24 24" id="play-icon">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </button>
+                    <!-- Próxima -->
+                    <button class="player-btn" onclick="nextTrack()" title="Próxima">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 4l10 8-10 8V4zM17 4h2v16h-2z" />
+                        </svg>
+                    </button>
+                    <!-- Repetir -->
+                    <button class="player-btn" id="btn-repeat" onclick="toggleRepeat()" title="Repetir">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17 1l4 4-4 4" />
+                            <path d="M3 11V9a4 4 0 014-4h14" />
+                            <path d="M7 23l-4-4 4-4" />
+                            <path d="M21 13v2a4 4 0 01-4 4H3" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Volume -->
+                <div class="volume-container">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M15.54 8.46a5 5 0 010 7.07" />
+                        <path d="M3 9v6h4l5 5V4L7 9H3z" />
+                    </svg>
+                    <input type="range" class="volume-slider" id="volume-slider" min="0" max="100" value="70"
+                        oninput="changeVolume(this.value)">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 9v6h4l5 5V4L7 9H3z" />
+                        <path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- ============================================================
+                 LISTA DE MÚSICAS (Tracklist)
+                 ALTERE: Adicione suas músicas aqui
+                 
+                 COMO ADICIONAR MÚSICAS:
+                 1. Coloque o arquivo .mp3 na pasta assets/music/
+                 2. Copie um bloco <div class="track-item"> abaixo
+                 3. Altere data-src para o caminho do arquivo
+                 4. Altere data-title para o nome da música
+                 5. Altere data-artist para o artista
+                 6. Altere data-duration para a duração
+                 ============================================================ -->
+            <div class="tracklist" id="tracklist">
+                <!-- Música 1 — Pyramids (Frank Ocean) -->
+                <div class="track-item active" data-src="assets/music/Pyramids - Frank Ocean.mp3" data-title="Pyramids"
+                    data-artist="Frank Ocean" data-comment="Uma viagem noturna" onclick="selectTrack(0)">
+                    <div class="track-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1" />
+                            <rect x="14" y="3" width="7" height="7" rx="1" />
+                            <rect x="3" y="14" width="7" height="7" rx="1" />
+                            <rect x="14" y="14" width="7" height="7" rx="1" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-name">Pyramids</div>
+                        <div class="track-artist">Frank Ocean • "Uma viagem noturna"</div>
+                    </div>
+                    <div class="track-duration">9:52</div>
+                </div>
+
+                <!-- Música 2 — Shades Of Cool (Lana Del Rey) -->
+                <div class="track-item" data-src="assets/music/Lana Del Rey - Shades Of Cool - LanaDelReyVEVO.mp3"
+                    data-title="Shades Of Cool" data-artist="Lana Del Rey" data-comment="Sombras de elegância"
+                    onclick="selectTrack(1)">
+                    <div class="track-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 18V5l12-2v13" />
+                            <circle cx="6" cy="18" r="3" />
+                            <circle cx="18" cy="16" r="3" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-name">Shades Of Cool</div>
+                        <div class="track-artist">Lana Del Rey • "Sombras de elegância"</div>
+                    </div>
+                    <div class="track-duration">5:43</div>
+                </div>
+
+                <!-- Música 3 — Risk (Deftones) -->
+                <div class="track-item" data-src="assets/music/Deftones –  Risk (Official Visualizer) - Deftones.mp3"
+                    data-title="Risk" data-artist="Deftones" data-comment="Pura energia sombria"
+                    onclick="selectTrack(2)">
+                    <div class="track-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-name">Risk</div>
+                        <div class="track-artist">Deftones • "Pura energia sombria"</div>
+                    </div>
+                    <div class="track-duration">3:38</div>
+                </div>
+
+                <!-- Música 4 — Heaven Can Wait (Michael Jackson) -->
+                <div class="track-item"
+                    data-src="assets/music/Michael Jackson - Heaven Can Wait (Official Audio) - michaeljacksonVEVO.mp3"
+                    data-title="Heaven Can Wait" data-artist="Michael Jackson" data-comment="O céu pode esperar"
+                    onclick="selectTrack(3)">
+                    <div class="track-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-name">Heaven Can Wait</div>
+                        <div class="track-artist">Michael Jackson • "O céu pode esperar"</div>
+                    </div>
+                    <div class="track-duration">4:49</div>
+                </div>
+
+                <!-- Música 5 — Wonderwall (Oasis) -->
+                <div class="track-item" data-src="assets/music/Wonderwall (Remastered) - Oasis.mp3"
+                    data-title="Wonderwall" data-artist="Oasis" data-comment="A parede das maravilhas"
+                    onclick="selectTrack(4)">
+                    <div class="track-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <circle cx="12" cy="12" r="3" />
+                            <circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1" />
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-name">Wonderwall</div>
+                        <div class="track-artist">Oasis • "A parede das maravilhas"</div>
+                    </div>
+                    <div class="track-duration">4:18</div>
+                </div>
+
+                <!-- 
+                    PARA ADICIONAR MAIS MÚSICAS:
+                    1. Coloque o arquivo .mp3 em assets/music/
+                    2. Copie o bloco <div class="track-item"> acima
+                    3. Altere data-src, data-title, data-artist, data-comment
+                    4. Altere o texto visível (track-name, track-artist, track-duration)
+                    5. Atualize o onclick="selectTrack(N)" com o próximo índice
+                -->
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SEPARADOR DECORATIVO
+             ============================================================ -->
+        <div class="divider">
+            <div class="divider-line"></div>
+            <span class="star-icon">✦</span>
+            <svg viewBox="0 0 24 24">
+                <path d="M12 22c-4.97 0-9-2.69-9-6v-2c0-3.31 4.03-6 9-6s9 2.69 9 6v2c0 3.31-4.03 6-9 6z" />
+            </svg>
+            <span class="star-icon">✦</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- ============================================================
+             SEÇÃO DE MENSAGEM FINAL — "Feliz Aniversário"
+             ALTERE: Mensagem de aniversário personalizada
+             ============================================================ -->
+        <section class="message-section reveal" id="mensagem">
+            <div class="message-card">
+                <!-- Selo decorativo -->
+                <div class="message-seal">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                        <path
+                            d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+                    </svg>
+                </div>
+
+                <!-- ALTERE: Label do pacto -->
+                <div class="message-pact-label">Pacto de Amizade • Selo Carmesim</div>
+
+                <!-- ALTERE: Título da mensagem -->
+                <h2 class="message-title">Feliz Aniversário!</h2>
+
+                <div class="message-quote-mark">❝</div>
+
+                <!-- ALTERE: Texto da mensagem de aniversário -->
+                <p class="message-text">
+                    "Que a sua luz nas sombras nunca se apague e que o nosso amor atravesse séculos, invernos e todas
+                    as noites mais escuras. Com todo meu amor eterno."
+                </p>
+
+                <!-- Botão decorativo -->
+                <button class="btn-save-message" onclick="saveMessage()">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                    </svg>
+                    Gravar no Livro de Feitiços
+                </button>
+            </div>
+        </section>
+
+        <!-- Espaço final -->
+        <div style="height: 40px;"></div>
+
+    </main>
+
+    <!-- ============================================================
+         LIGHTBOX — Modal para visualizar fotos em tela cheia
+         (Não precisa alterar, controlado via JavaScript)
+         ============================================================ -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close">✕</button>
+        <img id="lightbox-img" src="" alt="Foto em tela cheia">
+    </div>
+
+    <!-- ============================================================
+         JAVASCRIPT — Lógica do site
+         ============================================================ -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

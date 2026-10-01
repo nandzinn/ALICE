@@ -1,0 +1,1486 @@
+/* ============================================================
+   NOCTURNE — Celebração das Sombras
+   Site de Aniversário | Tema Gótico Romântico
+   
+   GUIA DE CORES:
+   --obsidian:     #0d0d0f    (Fundo principal - preto profundo)
+   --onyx:         #1a1a1e    (Cards e seções)
+   --charcoal:     #2a2a30    (Bordas e detalhes)
+   --ash:          #3a3a42    (Elementos secundários)
+   --silver:       #8a8a96    (Texto secundário)
+   --ivory:        #e8e0d4    (Texto principal - bege claro)
+   --gold:         #c9a84c    (Destaques dourados)
+   --gold-dim:     #a6893a    (Dourado suave)
+   --crimson:      #8b1a1a    (Vermelho carmesim)
+   --crimson-glow: #b22222    (Vermelho vibrante)
+   --rose:         #e8a0a0    (Rosa suave para subtítulos)
+   --blush:        #f5c6c6    (Rosa claro)
+   
+   PARA ALTERAR O TEMA:
+   Modifique as variáveis CSS abaixo no :root
+   ============================================================ */
+
+/* ---- Importação de Fontes ---- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+
+/* ============================================================
+   VARIÁVEIS GLOBAIS — Altere aqui para mudar todo o tema
+   ============================================================ */
+:root {
+    /* Cores do Tema */
+    --obsidian: #0d0d0f;
+    --onyx: #1a1a1e;
+    --charcoal: #2a2a30;
+    --ash: #3a3a42;
+    --silver: #8a8a96;
+    --ivory: #e8e0d4;
+    --gold: #c9a84c;
+    --gold-dim: #a6893a;
+    --crimson: #8b1a1a;
+    --crimson-glow: #b22222;
+    --rose: #e8a0a0;
+    --blush: #f5c6c6;
+
+    /* Fontes */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Cormorant Garamond', 'Times New Roman', serif;
+    --font-ui: 'Outfit', 'Segoe UI', sans-serif;
+
+    /* Espaçamentos */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+
+    /* Bordas e Sombras */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-full: 50%;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 30px rgba(139, 26, 26, 0.2);
+
+    /* Transições */
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 0.2s var(--ease-smooth);
+    --transition-normal: 0.4s var(--ease-smooth);
+    --transition-slow: 0.8s var(--ease-smooth);
+}
+
+/* ============================================================
+   RESET E BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    /* Ajuste o tamanho base da fonte aqui se necessário */
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--obsidian);
+    color: var(--ivory);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ---- Scrollbar Personalizada ---- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--obsidian);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--charcoal);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ash);
+}
+
+/* ============================================================
+   PARTÍCULAS DE FUNDO (efeito flutuante)
+   ============================================================ */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/* ============================================================
+   NAVEGAÇÃO FIXA NO TOPO
+   ============================================================ */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(26, 26, 30, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--charcoal);
+    padding: 0.6rem 1.5rem;
+    border-radius: 0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0.5rem 1.2rem;
+    color: var(--silver);
+    text-decoration: none;
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color var(--transition-fast);
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.nav-item svg,
+.nav-item .nav-icon {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    transition: all var(--transition-fast);
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: var(--gold);
+}
+
+.nav-item.active svg {
+    filter: drop-shadow(0 0 6px rgba(201, 168, 76, 0.5));
+}
+
+/* ============================================================
+   CONTAINER PRINCIPAL
+   ============================================================ */
+.main-container {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    /* Largura do layout mobile — altere para wider se desejado */
+    margin: 0 auto;
+    padding-bottom: 80px;
+    /* Espaço para a navbar fixa */
+}
+
+/* ============================================================
+   SEÇÃO HERO — Cabeçalho Principal
+   ============================================================ */
+.hero-section {
+    position: relative;
+    padding: var(--space-md);
+    padding-top: var(--space-lg);
+    text-align: center;
+}
+
+/* Card do cabeçalho "Nocturne • Capítulo Secreto" */
+.hero-header-card {
+    background: linear-gradient(135deg, var(--onyx) 0%, rgba(26, 26, 30, 0.8) 100%);
+    border: 1px solid var(--charcoal);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-header-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--crimson-glow), transparent);
+}
+
+.hero-header-info {
+    text-align: left;
+}
+
+.hero-header-label {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 4px;
+}
+
+.hero-header-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--ivory);
+    font-weight: 400;
+}
+
+/* Ícone/Selo do header */
+.hero-seal {
+    width: 48px;
+    height: 48px;
+    background: radial-gradient(circle, var(--crimson-glow), var(--crimson));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--gold-dim);
+    box-shadow: 0 0 15px rgba(139, 26, 26, 0.4);
+    animation: sealPulse 3s ease-in-out infinite;
+}
+
+@keyframes sealPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(139, 26, 26, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(139, 26, 26, 0.7); }
+}
+
+.hero-seal svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--gold);
+}
+
+/* Badge da data */
+.hero-date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(42, 42, 48, 0.6);
+    border: 1px solid var(--ash);
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+    margin-bottom: var(--space-lg);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--ivory);
+}
+
+.hero-date-badge .star {
+    color: var(--gold);
+}
+
+/* Título principal do herói */
+.hero-title {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    line-height: 1.2;
+    font-weight: 400;
+    margin-bottom: var(--space-md);
+    color: var(--ivory);
+}
+
+/* ALTERE: Texto em itálico rosa no título */
+.hero-title em {
+    font-style: italic;
+    color: var(--rose);
+    font-weight: 700;
+}
+
+/* Subtítulo / descrição */
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    color: var(--silver);
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 0 auto var(--space-md);
+    font-weight: 300;
+}
+
+/* Badges de status (Status: Imortal, Idade: Ancestral, etc.) */
+.status-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: var(--space-lg);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(42, 42, 48, 0.5);
+    border: 1px solid var(--ash);
+    border-radius: 30px;
+    padding: 0.45rem 1rem;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    transition: all var(--transition-fast);
+}
+
+.badge:hover {
+    border-color: var(--gold-dim);
+    background: rgba(201, 168, 76, 0.08);
+}
+
+.badge svg {
+    width: 14px;
+    height: 14px;
+    fill: var(--gold);
+}
+
+/* ============================================================
+   SEÇÃO DE FOTO PRINCIPAL COM CITAÇÃO
+   ============================================================ */
+.vow-section {
+    position: relative;
+    margin: 0 var(--space-md) var(--space-lg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    min-height: 380px;
+}
+
+/* ALTERE: Imagem de fundo da seção de citação */
+.vow-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.35) saturate(0.8);
+    transition: filter var(--transition-slow);
+}
+
+.vow-section:hover .vow-image {
+    filter: brightness(0.45) saturate(1);
+}
+
+.vow-content {
+    position: relative;
+    z-index: 2;
+    padding: var(--space-lg) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 380px;
+    background: linear-gradient(to top, rgba(13, 13, 15, 0.95) 0%, rgba(13, 13, 15, 0.4) 50%, transparent 100%);
+}
+
+.vow-label {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--rose);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vow-label svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--rose);
+}
+
+/* ALTERE: Texto da citação/voto */
+.vow-quote {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ivory);
+    margin-bottom: var(--space-md);
+}
+
+.vow-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vow-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--silver);
+}
+
+.vow-status .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--rose);
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.btn-eternize {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232, 160, 160, 0.15);
+    border: 1px solid rgba(232, 160, 160, 0.3);
+    border-radius: 30px;
+    padding: 0.5rem 1.2rem;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--rose);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-eternize:hover {
+    background: rgba(232, 160, 160, 0.25);
+    transform: scale(1.05);
+}
+
+.btn-eternize svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--rose);
+}
+
+/* ============================================================
+   SEÇÃO GRIMÓRIO PESSOAL — Crônicas & Segredos (Timeline)
+   ============================================================ */
+.chronicles-section {
+    padding: var(--space-lg) var(--space-md);
+}
+
+.section-header {
+    margin-bottom: var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.section-label {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 6px;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--ivory);
+    font-weight: 400;
+}
+
+.section-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--silver);
+}
+
+/* Timeline de capítulos */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    position: relative;
+}
+
+/* Linha vertical da timeline */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold-dim), var(--crimson-glow), var(--gold-dim));
+}
+
+.timeline-card {
+    background: var(--onyx);
+    border: 1px solid var(--charcoal);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-left: 20px;
+    position: relative;
+    transition: all var(--transition-normal);
+}
+
+.timeline-card:hover {
+    border-color: var(--ash);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Marcador na timeline */
+.timeline-card::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-full);
+    background: var(--gold);
+    border: 2px solid var(--obsidian);
+    box-shadow: 0 0 8px rgba(201, 168, 76, 0.4);
+}
+
+.timeline-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.timeline-card-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--ivory);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.timeline-card-title svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--gold-dim);
+    flex-shrink: 0;
+}
+
+.timeline-card-year {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold-dim);
+    padding: 4px 10px;
+    border: 1px solid var(--ash);
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.timeline-card-text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--silver);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   GALERIA DE FOTOS — "Memórias Eternas"
+   ============================================================ */
+.gallery-section {
+    padding: var(--space-lg) var(--space-md);
+}
+
+.gallery-grid {
+    display: grid;
+    gap: 12px;
+}
+
+/* Layout de grid para as fotos 
+   ALTERE: Ajuste grid-template para reorganizar as fotos */
+.gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
+}
+
+/* A primeira foto ocupa mais espaço */
+.gallery-item:first-child {
+    grid-column: 1 / -1;
+    grid-row: span 2;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+
+/* ALTERE: Imagens da galeria */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all var(--transition-slow);
+    filter: brightness(0.85) saturate(0.9);
+}
+
+.gallery-item:hover img {
+    filter: brightness(1) saturate(1.1);
+    transform: scale(1.05);
+}
+
+.gallery-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-sm);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+}
+
+.gallery-item-label {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+}
+
+/* Estilos para mais fotos */
+.gallery-add-more {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    border: 2px dashed var(--charcoal);
+    border-radius: var(--radius-md);
+    color: var(--silver);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gallery-add-more:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold);
+}
+
+.gallery-add-more svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* ============================================================
+   SEÇÃO DO TOCA-DISCOS — Player de Música
+   ============================================================ */
+.music-section {
+    padding: var(--space-lg) var(--space-md);
+}
+
+/* Vinil girando */
+.vinyl-player {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+}
+
+.vinyl-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin-bottom: var(--space-md);
+}
+
+/* Disco de vinil */
+.vinyl-disc {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: 
+        radial-gradient(circle at center, 
+            var(--crimson-glow) 0%, 
+            var(--crimson) 15%, 
+            #111 16%, 
+            #1a1a1a 17%,
+            #111 18%,
+            #1a1a1a 25%,
+            #111 26%,
+            #1a1a1a 33%,
+            #111 34%,
+            #1a1a1a 41%,
+            #111 42%,
+            #1a1a1a 49%,
+            #111 50%,
+            #1a1a1a 57%,
+            #111 58%,
+            #1a1a1a 65%,
+            #111 66%,
+            #1a1a1a 73%,
+            #111 74%,
+            #1a1a1a 81%,
+            #111 82%,
+            #1a1a1a 89%,
+            #111 90%,
+            #222 100%
+        );
+    border: 3px solid var(--charcoal);
+    box-shadow: 
+        0 0 40px rgba(0, 0, 0, 0.6),
+        inset 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Centro do disco — ALTERE: coloque a capa do álbum aqui */
+.vinyl-center {
+    width: 90px;
+    height: 90px;
+    border-radius: var(--radius-full);
+    background: var(--crimson);
+    border: 2px solid var(--gold-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 2;
+    position: relative;
+}
+
+.vinyl-center img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-full);
+}
+
+.vinyl-center-label {
+    font-family: var(--font-ui);
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ivory);
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Animação de rotação do vinil */
+.vinyl-disc.spinning {
+    animation: vinylSpin 2s linear infinite;
+}
+
+@keyframes vinylSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Agulha do toca-discos */
+.vinyl-arm {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    width: 120px;
+    height: 120px;
+    z-index: 3;
+    transform-origin: top right;
+    transform: rotate(-30deg);
+    transition: transform 0.8s var(--ease-smooth);
+}
+
+.vinyl-arm.playing {
+    transform: rotate(0deg);
+}
+
+.vinyl-arm-line {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 3px;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--silver), var(--ash));
+    border-radius: 2px;
+    transform: rotate(-15deg);
+    transform-origin: top center;
+}
+
+.vinyl-arm-pivot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--silver);
+    border-radius: var(--radius-full);
+    border: 2px solid var(--charcoal);
+}
+
+.vinyl-arm-head {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 15px;
+    background: var(--silver);
+    border-radius: 0 0 3px 3px;
+}
+
+/* Info da música tocando */
+.now-playing {
+    text-align: center;
+    margin-bottom: var(--space-md);
+}
+
+.now-playing-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--rose);
+    margin-bottom: 8px;
+}
+
+.now-playing-label .wave-icon {
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+    height: 12px;
+}
+
+.now-playing-label .wave-bar {
+    width: 2px;
+    background: var(--rose);
+    border-radius: 1px;
+    animation: waveAnim 0.8s ease-in-out infinite alternate;
+}
+
+.now-playing-label .wave-bar:nth-child(1) { height: 4px; animation-delay: 0s; }
+.now-playing-label .wave-bar:nth-child(2) { height: 8px; animation-delay: 0.2s; }
+.now-playing-label .wave-bar:nth-child(3) { height: 5px; animation-delay: 0.4s; }
+.now-playing-label .wave-bar:nth-child(4) { height: 10px; animation-delay: 0.1s; }
+
+.now-playing-label .wave-bar.paused {
+    animation: none;
+    height: 3px !important;
+}
+
+@keyframes waveAnim {
+    to { height: 12px; }
+}
+
+/* ALTERE: Nome da música e artista */
+.now-playing-song {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--ivory);
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.now-playing-artist {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--silver);
+}
+
+/* Barra de progresso */
+.progress-container {
+    width: 100%;
+    margin-bottom: var(--space-sm);
+}
+
+.progress-bar-wrapper {
+    width: 100%;
+    height: 4px;
+    background: var(--charcoal);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--crimson-glow), var(--gold));
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+    position: relative;
+}
+
+.progress-bar-fill::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--ivory);
+    border-radius: var(--radius-full);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.progress-bar-wrapper:hover .progress-bar-fill::after {
+    opacity: 1;
+}
+
+.progress-times {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    color: var(--silver);
+    letter-spacing: 1px;
+}
+
+.quality-label {
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Controles do player */
+.player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.player-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--charcoal);
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--ivory);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.player-btn:hover {
+    background: var(--ash);
+    transform: scale(1.1);
+}
+
+.player-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.player-btn-play {
+    width: 56px;
+    height: 56px;
+    background: var(--crimson-glow);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 15px rgba(178, 34, 34, 0.4);
+}
+
+.player-btn-play:hover {
+    background: #c62828;
+    box-shadow: 0 6px 20px rgba(178, 34, 34, 0.6);
+}
+
+.player-btn-play svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Volume */
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.6rem 1rem;
+    background: var(--onyx);
+    border-radius: 30px;
+    border: 1px solid var(--charcoal);
+}
+
+.volume-container svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--gold-dim);
+    flex-shrink: 0;
+}
+
+.volume-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 3px;
+    background: var(--charcoal);
+    border-radius: 2px;
+    outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--ivory);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+}
+
+/* ============================================================
+   LISTA DE MÚSICAS (Tracklist)
+   ============================================================ */
+.tracklist {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--onyx);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.track-item:hover {
+    background: var(--charcoal);
+    border-color: var(--ash);
+}
+
+.track-item.active {
+    background: rgba(139, 26, 26, 0.15);
+    border-color: var(--crimson);
+}
+
+.track-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--charcoal);
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.track-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--gold);
+}
+
+.track-info {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ALTERE: Nome e artista das músicas */
+.track-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--ivory);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-artist {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--silver);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-duration {
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--silver);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   SEÇÃO DE MENSAGEM — "Feliz Aniversário"
+   ============================================================ */
+.message-section {
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+}
+
+.message-card {
+    background: linear-gradient(135deg, rgba(139, 26, 26, 0.15) 0%, var(--onyx) 100%);
+    border: 1px solid rgba(139, 26, 26, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl) var(--space-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.message-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(139, 26, 26, 0.08) 0%, transparent 50%);
+    animation: messageGlow 6s ease-in-out infinite;
+}
+
+@keyframes messageGlow {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(20px, -20px); }
+    66% { transform: translate(-20px, 20px); }
+}
+
+.message-seal {
+    width: 56px;
+    height: 56px;
+    background: var(--crimson-glow);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-md);
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 20px rgba(178, 34, 34, 0.4);
+}
+
+.message-seal svg {
+    width: 26px;
+    height: 26px;
+    fill: var(--ivory);
+}
+
+.message-pact-label {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--gold);
+    margin-bottom: var(--space-sm);
+    position: relative;
+    z-index: 2;
+}
+
+/* ALTERE: Título da mensagem de aniversário */
+.message-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--ivory);
+    font-weight: 400;
+    margin-bottom: var(--space-sm);
+    position: relative;
+    z-index: 2;
+}
+
+.message-quote-mark {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--crimson-glow);
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+}
+
+/* ALTERE: Texto da mensagem de aniversário */
+.message-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--silver);
+    line-height: 1.7;
+    max-width: 360px;
+    margin: 0 auto var(--space-md);
+    position: relative;
+    z-index: 2;
+}
+
+.btn-save-message {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(139, 26, 26, 0.2);
+    border: 1px solid rgba(139, 26, 26, 0.4);
+    border-radius: 30px;
+    padding: 0.65rem 1.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--rose);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    z-index: 2;
+}
+
+.btn-save-message:hover {
+    background: rgba(139, 26, 26, 0.35);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-save-message svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--rose);
+}
+
+/* ============================================================
+   SEPARADOR DECORATIVO
+   ============================================================ */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: var(--space-md) 0;
+    color: var(--gold-dim);
+}
+
+.divider-line {
+    flex: 1;
+    max-width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--charcoal));
+}
+
+.divider-line:last-child {
+    background: linear-gradient(90deg, var(--charcoal), transparent);
+}
+
+.divider svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--gold-dim);
+}
+
+.divider .star-icon {
+    font-size: 0.7rem;
+}
+
+/* ============================================================
+   MODAL LIGHTBOX (para ver fotos em tela cheia)
+   ============================================================ */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+    backdrop-filter: blur(10px);
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform var(--transition-normal);
+}
+
+.lightbox.active img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--charcoal);
+    border: 1px solid var(--ash);
+    border-radius: var(--radius-full);
+    color: var(--ivory);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all var(--transition-fast);
+}
+
+.lightbox-close:hover {
+    background: var(--crimson);
+}
+
+/* ============================================================
+   ANIMAÇÃO DE ENTRADA (Scroll Reveal)
+   ============================================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s var(--ease-smooth);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+
+/* Tablets */
+@media (min-width: 768px) {
+    .main-container {
+        max-width: 520px;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 220px;
+    }
+
+    .gallery-item:first-child {
+        grid-column: 1 / 3;
+    }
+
+    .vinyl-container {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .main-container {
+        max-width: 600px;
+    }
+
+    .navbar {
+        bottom: auto;
+        top: 0;
+        border-top: none;
+        border-bottom: 1px solid var(--charcoal);
+        border-radius: 0;
+    }
+
+    .main-container {
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .gallery-grid {
+        grid-auto-rows: 240px;
+    }
+}
+
+/* ============================================================
+   ANIMAÇÃO DE FADE IN PARA CARREGAMENTO
+   ============================================================ */
+.fade-in {
+    animation: fadeIn 1.2s var(--ease-smooth) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Delay para elementos entrarem em sequência */
+.fade-in-delay-1 { animation: fadeIn 1.2s var(--ease-smooth) 0.2s forwards; opacity: 0; }
+.fade-in-delay-2 { animation: fadeIn 1.2s var(--ease-smooth) 0.4s forwards; opacity: 0; }
+.fade-in-delay-3 { animation: fadeIn 1.2s var(--ease-smooth) 0.6s forwards; opacity: 0; }
+.fade-in-delay-4 { animation: fadeIn 1.2s var(--ease-smooth) 0.8s forwards; opacity: 0; }
